@@ -477,6 +477,47 @@ def keyword_fallback_predict(text: str) -> tuple[str, float, dict[str, float]]:
 #  MAIN CONTENT & TABS
 # ======================================================================
 
+# ── Sidebar Settings ──────────────────────────────────────────
+with st.sidebar:
+    st.markdown('<p style="font-size:1.6rem;font-weight:800;margin-bottom:0.5rem;color:var(--accent-purple);text-align:center;">🛡️ Analyzer Settings</p>', unsafe_allow_html=True)
+    st.markdown('<div style="height:2px;background:linear-gradient(90deg,transparent,#a855f7,transparent);margin-bottom:1.5rem;"></div>', unsafe_allow_html=True)
+    
+    # Model selection
+    st.markdown('<p style="font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;color:var(--text-primary);">🧠 Classification Engine</p>', unsafe_allow_html=True)
+    model_choice = st.radio(
+        "Choose Model Architecture:",
+        ["Best Baseline Model (XGBoost/RF/LR)", "Deep Learning Model (Bi-LSTM)"],
+        index=0,
+        label_visibility="collapsed",
+        key="sidebar_model_choice"
+    )
+    
+    st.markdown('<div class="subtle-divider" style="margin:1rem 0;"></div>', unsafe_allow_html=True)
+    
+    # Sample templates selection
+    st.markdown('<p style="font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;color:var(--text-primary);">📝 Load Preset Templates</p>', unsafe_allow_html=True)
+    sample_options = ['— Select a sample —'] + list(SAMPLE_EMAILS.keys())
+    selected_sample = st.selectbox(
+        "Select a template to auto-fill:",
+        options=sample_options,
+        index=0,
+        label_visibility="collapsed",
+        key="sidebar_sample_select"
+    )
+    
+    st.markdown('<div class="subtle-divider" style="margin:1rem 0;"></div>', unsafe_allow_html=True)
+    
+    # About Section
+    st.markdown('<p style="font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;color:var(--text-primary);">ℹ️ Project Overview</p>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="font-size:0.88rem;color:var(--text-secondary);line-height:1.5;">'
+        'This dashboard classifies emails into 5 risk tiers (Safe, Spam, Phishing, '
+        'Promotion, Suspicious), provides explainable AI indicators, calculates threat '
+        'scores (0-100), and scans IMAP/Gmail inboxes.'
+        '</div>',
+        unsafe_allow_html=True
+    )
+
 # ── Hero header ──────────────────────────────────────────────
 st.markdown(
     '<p class="hero-title">🛡️ AI Email Risk Analyzer</p>'
@@ -908,4 +949,4 @@ st.markdown(
     '🛡️ AI Email Risk Analyzer • Active Threat Protection • Built with Streamlit & Python'
     '</p>',
     unsafe_allow_html=True,
-)
+)
