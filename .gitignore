@@ -1,0 +1,60 @@
+# ─── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# ─── Virtual Environments ─────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ─── IDE / Editor ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Data (large files — regenerate with generate_data.py) 
+data/raw/
+data/processed/*.csv
+
+# ─── Trained Models (large binary files — retrain with train.py)
+models/baseline/*.pkl
+models/deep_learning/*.keras
+models/deep_learning/*.h5
+models/deep_learning/*.json
+models/deep_learning/*.npy
+
+# ─── Reports / Generated Outputs ──────────────────────────
+reports/figures/*.png
+reports/metrics/*.json
+
+# ─── Streamlit Cache ──────────────────────────────────────
+.streamlit/
+
+# ─── Jupyter Notebook Checkpoints ─────────────────────────
+.ipynb_checkpoints/
+
+# ─── Environment / Secrets (NEVER commit these!) ──────────
+.env
+.env.local
+*.pem
+*.key
+secrets.toml
+
+# ─── Temporary / Scratch Files ────────────────────────────
+fix_app.py
+*.tmp
+*.bak
+*.log
