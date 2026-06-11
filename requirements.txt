@@ -1,6 +1,5 @@
 # AI-Powered Email Risk Analyzer
 # Core ML/AI
-tensorflow>=2.15.0
 scikit-learn>=1.3.0
 xgboost>=2.0.0
 nltk>=3.8.0
