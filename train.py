@@ -127,7 +127,7 @@ def main():
         print("    Run the data‑preparation step first.")
         sys.exit(1)
 
-    df = pd.read_csv(DATA_PATH)
+    df = pd.read_csv(DATA_PATH, encoding='utf-8')
     print(f"    Loaded {len(df):,} emails  |  Columns: {list(df.columns)}")
     print(f"    Label distribution:\n{df['label'].value_counts().to_string()}")
 
@@ -350,7 +350,7 @@ def main():
         print(f"    💾  Model saved → {DL_DIR}/bilstm_model.keras")
 
         tokenizer_json = tokenizer.to_json()
-        with open(os.path.join(DL_DIR, 'tokenizer.json'), 'w') as f:
+        with open(os.path.join(DL_DIR, 'tokenizer.json'), 'w', encoding='utf-8') as f:
             f.write(tokenizer_json)
         print(f"    💾  Tokenizer saved → {DL_DIR}/tokenizer.json")
 
@@ -425,7 +425,7 @@ def main():
 
     # Save results JSON
     results_path = os.path.join(METRICS_DIR, 'training_results.json')
-    with open(results_path, 'w') as f:
+    with open(results_path, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2)
     print(f"📁  Training results saved → {results_path}")
 

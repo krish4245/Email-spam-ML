@@ -220,7 +220,7 @@ def main():
         print(f"❌  Dataset not found at '{DATA_PATH}'. Exiting.")
         sys.exit(1)
 
-    df = pd.read_csv(DATA_PATH)
+    df = pd.read_csv(DATA_PATH, encoding='utf-8')
     texts_original = df['text'].astype(str).tolist()
     texts_clean    = [clean_text(t) for t in texts_original]
     y = _encode_labels(df['label'])
@@ -342,7 +342,7 @@ def main():
             dl_model = load_model(dl_model_path)
             print(f"    ✓ Bi-LSTM model loaded")
 
-            with open(os.path.join(DL_DIR, 'tokenizer.json'), 'r') as f:
+            with open(os.path.join(DL_DIR, 'tokenizer.json'), 'r', encoding='utf-8') as f:
                 tokenizer = tokenizer_from_json(f.read())
 
             X_test_seq = pad_sequences(
@@ -420,7 +420,7 @@ def main():
         }
 
     report_path = os.path.join(METRICS_DIR, 'evaluation_results.json')
-    with open(report_path, 'w') as f:
+    with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(report_payload, f, indent=2)
     print(f"    📁  Evaluation report → {report_path}")
 

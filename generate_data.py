@@ -289,7 +289,7 @@ def main():
     
     # Save CSV
     output_path = "data/processed/emails_dataset.csv"
-    df.to_csv(output_path, index=False)
+    df.to_csv(output_path, index=False, encoding='utf-8')
     
     print("\nDataset Generation Complete!")
     print(f"Total Emails Generated: {len(df)}")
